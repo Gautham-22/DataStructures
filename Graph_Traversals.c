@@ -42,7 +42,7 @@ struct Graph *graph;
 void main() {
     graph = (struct Graph *) malloc(sizeof(struct Graph));
     graph->size = SIZE;
-    graph->list = (struct adjList *) malloc(sizeof(struct adjList));
+    graph->list = (struct adjList *) malloc(SIZE * sizeof(struct adjList));
     for(int i=0; i<SIZE; i++) {
         graph->list[i].headValue = i+1;
         graph->list[i].node = NULL;
