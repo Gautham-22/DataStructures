@@ -8,6 +8,7 @@ struct edge {
 
 int par[SIZE], rank[SIZE];
 
+// find root parent of a disjoint set
 int find(int a)  { 
 	if(par[a] == -1) { 
 		return a; 
@@ -15,14 +16,16 @@ int find(int a)  {
 	return par[a] = find(par[a]);  
 } 
 
+// union by rank in disjoint set
 void merge(int a,int b)  { 
 	if(rank[a] < rank[b]) { 
-		par[a] = b; 
-		rank[b] += rank[a]; 
-	} else { 
-		par[b] = a; 
-		rank[a] += rank[b]; 
-	} 
+		par[a] = b;
+	} else if(rank[b] < rank[a]) { 
+		par[b] = a;
+	} else {
+		par[a] = b;
+		rank[b] += 1;
+	}
 } 
  
 int main() { 
